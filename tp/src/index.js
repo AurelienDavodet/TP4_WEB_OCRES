@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+
+
 class Choixprofil extends React.Component {
   constructor(props) {
     super(props);
@@ -31,15 +33,23 @@ class Choixprofil extends React.Component {
 
 class Profil extends React.Component {
   constructor(props) {
-    super(props);
-    
+    super(props); 
+    this.state = {
+      white: true
+    }
+  }
+
+  changeColor(){
+    this.setState({black: !this.state.black})
   }
 
   render() {
 
+    let color = this.state.black ? "blueButton" : "whiteButton";
+    
     return (
-      <div className="case">
-        <center><img src="index.png"></img></center>
+      <div className={color}>
+        <center><img src="prof.png"></img>
         <div className = "container">
           <div class="row">
             <div className="col-sm-6"><h3>Aurélien</h3></div>
@@ -47,9 +57,11 @@ class Profil extends React.Component {
           </div> 
         </div>
         <div><p>24/04/1998</p></div>
-        <div><button>Change Style</button></div>
-        
-        
+        <button 
+            onClick={this.changeColor.bind(this)}>
+            Change Style
+        </button>  
+        </center>  
       </div>
     );
   }
@@ -78,30 +90,16 @@ class Super extends React.Component {
 class Affichage extends React.Component {
 
   render() {
-  
-    if(true){
-      return (
-        <div>
-          <Choixprofil />
-          <br></br>
-          <Profil />
-          <br></br>
-          <Super />
-        </div>
-      );
-    }else{
-      return (
-        <div>
-          <Profil />
-          <br></br>
-          <Choixprofil />
-          <br></br>
-          
-          <Super />
-        </div>
-      );
-    }
-    
+
+    return (
+      <div>
+        <Choixprofil />
+        <br></br>
+        <Profil />
+        <br></br>
+        <Super />
+      </div>
+    );  
   }
 
 }
