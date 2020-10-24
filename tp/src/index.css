@@ -19,7 +19,7 @@ code {
   border-color:black;
 }
 
-.blueButton{
+.blue{
   padding:10px;
   border-width:1px;
   border-style:solid;
@@ -28,11 +28,39 @@ code {
   color: white;
 }
 
-.whiteButton{
+.white{
   padding:10px;
   border-width:1px;
   border-style:solid;
   border-color:black;
   background-color: white;
   color: black;
+}
+
+img{
+  width: 200px;
+  height: 200px;
+}
+
+.fbtitle{
+  color:#00BFFF;
+  font-size: 60px;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 25px;
+ 
+}
+
+button{
+  background-color: #00BFFF;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  
 }
