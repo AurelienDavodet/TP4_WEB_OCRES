@@ -10,21 +10,24 @@ let profils = [
     prenom: 'Aurélien',
     date: '24/04/98',
     photo:'aurel.png',
-    publi: "Le React c'est trop coool"
+    publi: "Le React c'est trop coool",
+    nb: 0
   },
   {
     nom: 'Marze',
     prenom: 'Oscar',
     date: '04/04/99',
     photo:'oscar.png',
-    publi: "J'aime la vie"
+    publi: "J'aime la vie",
+    nb: 0
   },
   {
     nom: 'Maréchal',
     prenom: 'Julien',
     date: '03/08/99',
     photo:'julien.png',
-    publi: "Je préfère les pâtes au riz"
+    publi: "Je préfère les pâtes au riz",
+    nb: 0
   }
 ];
 
@@ -37,7 +40,7 @@ class Profil extends React.Component{
     super(props); 
     this.state = {
       color: 'white',
-
+      
     }
   }
 
@@ -93,10 +96,24 @@ class Profil extends React.Component{
 class Commentaire extends React.Component{
   constructor(props) {
     super(props); 
-
+    this.state = {
+      nb:0
+    }
   }
 
+  changeNb = () => {
+    profils[this.props.prof].nb = profils[this.props.prof].nb +1
+    this.setState({nb: profils[this.props.prof].nb})
+  }
+
+
   render() {
+
+    const list = []
+
+    for (let i = 0; i < profils[this.props.prof].nb; i++) {
+      list.push(<p>C'est super</p>)
+    }
     
     return (
       
@@ -106,8 +123,8 @@ class Commentaire extends React.Component{
         
         <div className="case">
           <p>{profils[this.props.prof].publi}</p>
-          <div><button>C'est super !</button></div>
-          <p>Cest super !</p>
+          <div><button onClick={this.changeNb}>C'est super !</button></div>
+          {list}
         </div>
       
       </div>
