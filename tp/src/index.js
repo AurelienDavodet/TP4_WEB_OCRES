@@ -58,10 +58,6 @@ class Profil extends React.Component{
   }
 
   render() {
-
-    const styleObj = {
-      background: this.state.color
-    }
     
     return (
       
@@ -87,7 +83,7 @@ class Profil extends React.Component{
             <button 
                 onClick={this.changeColor}>
                 Change Style
-            </button>   
+            </button>        
             
         </div>
        
