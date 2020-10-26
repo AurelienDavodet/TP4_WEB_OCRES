@@ -1,8 +1,9 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+
+// les trois profils et leur contenu
 
 let profils = [
   {
@@ -11,7 +12,7 @@ let profils = [
     date: '24/04/98',
     photo:'aurel.png',
     publi: "Le React c'est trop coool",
-    nb: 0
+    nbLike: 0 //nombre de like (0 par défaut)
   },
   {
     nom: 'Marze',
@@ -19,7 +20,7 @@ let profils = [
     date: '04/04/99',
     photo:'oscar.png',
     publi: "J'aime la vie",
-    nb: 0
+    nbLike: 0
   },
   {
     nom: 'Maréchal',
@@ -27,22 +28,25 @@ let profils = [
     date: '03/08/99',
     photo:'julien.png',
     publi: "Je préfère les pâtes au riz",
-    nb: 0
+    nbLike: 0
   }
 ];
 
-let n =0;
+//numéro du profil par défaut
+let numProf =0;
 
 
+//class qui permet d'afficher les informations de chaque profil
 
 class Profil extends React.Component{
   constructor(props) {
     super(props); 
     this.state = {
-      color: 'white',
-      
+      color: 'white', //couleur par défaut     
     }
   }
+
+  //fonction qui change la couleur de fond
 
   changeColor = () => {
     if(this.state.color=="white"){
@@ -52,9 +56,12 @@ class Profil extends React.Component{
     }
     
   }
-  
 
   render() {
+
+    const styleObj = {
+      background: this.state.color
+    }
     
     return (
       
@@ -80,7 +87,7 @@ class Profil extends React.Component{
             <button 
                 onClick={this.changeColor}>
                 Change Style
-            </button>    
+            </button>   
             
         </div>
        
@@ -93,17 +100,20 @@ class Profil extends React.Component{
 
 }
 
+//class qui permet d'afficher la derniere publication et de la liker
+
 class Commentaire extends React.Component{
   constructor(props) {
     super(props); 
     this.state = {
-      nb:0
+      nbSuper:0 //nombre de "c'est super !"
     }
   }
 
+  //change le nombre de like stocké du profil
   changeNb = () => {
-    profils[this.props.prof].nb = profils[this.props.prof].nb +1
-    this.setState({nb: profils[this.props.prof].nb})
+    profils[this.props.prof].nbLike = profils[this.props.prof].nbLike +1
+    this.setState({nbSuper: profils[this.props.prof].nbLike})
   }
 
 
@@ -111,8 +121,9 @@ class Commentaire extends React.Component{
 
     const list = []
 
-    for (let i = 0; i < profils[this.props.prof].nb; i++) {
-      list.push(<p>C'est super</p>)
+    //affiche c'est super autant de fois que nécessaire
+    for (let i = 0; i < profils[this.props.prof].nbLike; i++) {
+      list.push("C'est super ! ")
     }
     
     return (
@@ -133,30 +144,30 @@ class Commentaire extends React.Component{
   }
 }
 
-
-class Button extends React.Component {
+//class qui permet d'afficher les boutons correspondants aux trois profils proposés
+class Choixprofil extends React.Component {
   constructor(props) {
     super(props); 
     this.state = {
-      n: 0
+      numProf: 0  //numéro profil par défaut
     }
   }
 
 
-
+//fonctions qui changent le profil et ses informations en fonction du bouton 
   changeProfil0 = () => {
-    n=0;
-    this.setState({n: 0});
+    numProf=0;
+    this.setState({numProf: 0});
   }
 
   changeProfil1 = () => {
-    n=1;
-    this.setState({n: 1});
+    numProf=1;
+    this.setState({numProf: 1});
   }
 
   changeProfil2 = () => {
-    n=2;
-    this.setState({n: 2});
+    numProf=2;
+    this.setState({numProf: 2});
   }
   
 
@@ -177,11 +188,9 @@ class Button extends React.Component {
         </div>
         
         <br></br>
-        <Profil prof={n} />
+        <Profil prof={numProf} />
         </center>  
-        <Commentaire prof={n} />
-
-        
+        <Commentaire prof={numProf} />
         
       </div>
      
@@ -189,7 +198,8 @@ class Button extends React.Component {
   }
 }
 
+//Affiche le contenu de la class choixprofil dans la div root
 ReactDOM.render(
-  <Button />,
+  <Choixprofil />,
   document.getElementById('root')
 );

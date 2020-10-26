@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+/* CSS pour les bordures de chaque case */
 .case {
   padding:10px;
   border-width:1px;
@@ -19,6 +20,7 @@ code {
   border-color:black;
 }
 
+/* CSS pour rendre la couleur de fond du profil bleu */
 .blue{
   padding:10px;
   border-width:1px;
@@ -28,6 +30,7 @@ code {
   color: white;
 }
 
+/* CSS pour rendre la couleur de fond du profil blanche */
 .white{
   padding:10px;
   border-width:1px;
@@ -37,11 +40,13 @@ code {
   color: black;
 }
 
+/* CSS pour définir la taille des images */
 img{
   width: 200px;
   height: 200px;
 }
 
+/* CSS pour le titre */
 .fbtitle{
   color:#00BFFF;
   font-size: 60px;
@@ -51,6 +56,7 @@ img{
  
 }
 
+/* CSS pour rendre les boutons */
 button{
   background-color: #00BFFF;
   border: none;
